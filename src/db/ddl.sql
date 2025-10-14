@@ -118,20 +118,27 @@ CREATE TABLE user_job_interests (
                                     CONSTRAINT fk_user_job_job_id FOREIGN KEY (job_id)
                                         REFERENCES jobs(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+-- ----------------------------
+--  skills
+-- ----------------------------
+CREATE TABLE skills (
+                      id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                      name VARCHAR(100) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 --  user_skill_interests
 -- ----------------------------
 CREATE TABLE user_skill_interests (
                                       user_id BIGINT NOT NULL,
-                                      type_id BIGINT NOT NULL,
+                                      skill_id BIGINT NOT NULL,
                                       created_at TIMESTAMP NOT NULL,
                                       updated_at TIMESTAMP NOT NULL,
                                       PRIMARY KEY (user_id, type_id),
                                       CONSTRAINT fk_user_skill_user_id FOREIGN KEY (user_id)
                                           REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
-                                      CONSTRAINT fk_user_skill_type_id FOREIGN KEY (type_id)
-                                          REFERENCES question_types(id) ON DELETE CASCADE ON UPDATE CASCADE
+                                      CONSTRAINT fk_user_skill_skill_id FOREIGN KEY (skill_id)
+                                          REFERENCES skills(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
