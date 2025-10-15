@@ -1,10 +1,9 @@
-package cse.skku.edu.dailycs.controller.user;
+package cse.skku.edu.dailycs.dto.user;
 
 import cse.skku.edu.dailycs.entity.User;
 import cse.skku.edu.dailycs.util.enumType.UserStatus;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 

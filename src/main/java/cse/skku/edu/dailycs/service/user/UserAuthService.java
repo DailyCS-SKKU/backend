@@ -1,6 +1,6 @@
 package cse.skku.edu.dailycs.service.user;
 
-import cse.skku.edu.dailycs.controller.user.UserInfoDto;
+import cse.skku.edu.dailycs.dto.user.UserInfoDto;
 import cse.skku.edu.dailycs.dto.auth.LoginUserDto;
 import cse.skku.edu.dailycs.entity.User;
 import cse.skku.edu.dailycs.repository.UserRepository;
