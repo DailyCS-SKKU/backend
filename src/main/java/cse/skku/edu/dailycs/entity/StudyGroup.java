@@ -2,11 +2,16 @@ package cse.skku.edu.dailycs.entity;
 
 import cse.skku.edu.dailycs.util.enumType.StudyGroupVisibility;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "study_groups")
 public class StudyGroup {
@@ -25,6 +30,7 @@ public class StudyGroup {
     private String description;
 
     @Column(length = 20)
+    @Enumerated(EnumType.STRING)
     private StudyGroupVisibility visibility = StudyGroupVisibility.PUBLIC;
 
     private Integer maxMembers;

@@ -3,11 +3,16 @@ package cse.skku.edu.dailycs.entity;
 
 import cse.skku.edu.dailycs.util.enumType.QuestionStatus;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "user_question_attempts")
 public class UserQuestionAttempt {
@@ -27,6 +32,7 @@ public class UserQuestionAttempt {
     private int attemptNo = 1;
 
     @Column(nullable = false, length = 20)
+    @Enumerated(EnumType.STRING)
     private QuestionStatus status = QuestionStatus.IN_PROGRESS; // IN_PROGRESS, CORRECT, WRONG
 
     @Column(columnDefinition = "TEXT")

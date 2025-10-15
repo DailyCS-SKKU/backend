@@ -3,10 +3,15 @@ package cse.skku.edu.dailycs.entity;
 import cse.skku.edu.dailycs.util.enumType.MessageRole;
 import cse.skku.edu.dailycs.util.enumType.MessageStatus;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "attempt_messages")
 public class AttemptMessage {
@@ -21,12 +26,14 @@ public class AttemptMessage {
     private int turnNo;
 
     @Column(nullable = false, length = 20)
+    @Enumerated(EnumType.STRING)
     private MessageRole role; // user/assistant
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String content;
 
     @Column(nullable = false, length = 20)
+    @Enumerated(EnumType.STRING)
     private MessageStatus status; // assistant/correct/wrong
 
     @Column(nullable = false)
