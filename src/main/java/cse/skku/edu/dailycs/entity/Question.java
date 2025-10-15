@@ -19,8 +19,8 @@ public class Question {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "question_type_id")
-    private QuestionType questionType;
+    @JoinColumn(name = "skill_id")
+    private Skill skill;
 
     @Column(columnDefinition = "TEXT", nullable = false)
     private String question;
