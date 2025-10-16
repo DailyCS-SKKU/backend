@@ -3,6 +3,7 @@ package cse.skku.edu.dailycs.entity;
 import cse.skku.edu.dailycs.entity.id.UserSkillInterestId;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -32,4 +33,9 @@ public class UserSkillInterest {
     @Column(nullable = false)
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public UserSkillInterest(User user, Skill skill) {
+        this.user = user;
+        this.skill = skill;
+    }
 }

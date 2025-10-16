@@ -32,4 +32,9 @@ public class UserJobInterest {
     @Column(nullable = false)
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public UserJobInterest(User user, Job job) {
+        this.user = user;
+        this.job = job;
+    }
 }
