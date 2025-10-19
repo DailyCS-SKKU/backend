@@ -50,4 +50,29 @@ public class UserQuestionController {
 
         return ResponseEntity.ok().body(result);
     }
+
+    @GetMapping("/correct")
+    public ResponseEntity<List<UserQuestionDto>> getCorrectQuestions(
+            @RequestParam Long skillId,
+            HttpServletRequest request
+    ) {
+        String token = jwtService.parseJWT(request);
+        Long userId = jwtService.getUserId(token);
+
+        List<UserQuestionDto> result = userQuestionService.getCorrectQuestions(userId, skillId);
+
+        return ResponseEntity.ok().body(result);
+    }
+
+    @GetMapping("/next") public ResponseEntity<UserQuestionDto> getNextQuestion(
+            @RequestParam Long skillId,
+            HttpServletRequest request
+    ) {
+        String token = jwtService.parseJWT(request);
+        Long userId = jwtService.getUserId(token);
+
+        UserQuestionDto result = userQuestionService.getNextQuestion(userId, skillId);
+
+        return ResponseEntity.ok().body(result);
+    }
 }

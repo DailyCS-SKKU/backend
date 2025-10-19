@@ -7,6 +7,7 @@ import cse.skku.edu.dailycs.entity.*;
 import cse.skku.edu.dailycs.entity.id.UserQuestionId;
 import cse.skku.edu.dailycs.repository.*;
 import cse.skku.edu.dailycs.service.message.AttemptMessageService;
+import cse.skku.edu.dailycs.util.enumType.QuestionStatus;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -82,5 +83,25 @@ public class UserQuestionService {
                 .collect(Collectors.toList());
 
         return new ChatRoomDto().from(userQuestionDto, messageDtos);
+    }
+
+    public List<UserQuestionDto> getCorrectQuestions(Long userId, Long skillId) {
+        List<UserQuestionDto> userQuestionsBySkillId = getUserQuestionsBySkillId(userId, skillId);
+
+        return userQuestionsBySkillId.stream()
+                .filter(dto -> dto.getStatus() != null)
+                .collect(Collectors.toList());
+    }
+
+    public UserQuestionDto getNextQuestion(Long userId, Long skillId) {
+        List<UserQuestionDto> userQuestionsBySkillId = getUserQuestionsBySkillId(userId, skillId);
+
+        for (UserQuestionDto dto : userQuestionsBySkillId) {
+            if (dto.getStatus() == null) {
+                return dto;
+            }
+        }
+
+        return null;
     }
 }
