@@ -56,4 +56,11 @@ public class UserQuestionAttempt {
         this.user = user;
         this.question = question;
     }
+
+    public void update(String userAnswer, String feedback, String summary, QuestionStatus status) {
+        this.attemptNo += 1;
+        this.finalUserAnswer = userAnswer;
+        this.finalAiFeedback = feedback;
+        this.finalAiSummary = summary;
+    }
 }

@@ -24,7 +24,16 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.ai:spring-ai-bom:1.0.0"
+	}
+}
+
 dependencies {
+
+	// Spring AI
+	implementation "org.springframework.ai:spring-ai-starter-model-openai"
 
 	// JWT
 	implementation(platform("io.jsonwebtoken:jjwt-bom:0.13.0"))

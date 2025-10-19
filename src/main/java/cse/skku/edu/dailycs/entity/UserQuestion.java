@@ -47,4 +47,8 @@ public class UserQuestion  {
         this.user = user;
         this.question = question;
     }
+
+    public void updateStatus(QuestionStatus status) {
+        this.status = status;
+    }
 }
