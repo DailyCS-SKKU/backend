@@ -3,15 +3,15 @@ package cse.skku.edu.dailycs.entity;
 import cse.skku.edu.dailycs.util.enumType.MessageRole;
 import cse.skku.edu.dailycs.util.enumType.MessageStatus;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Builder
 @Entity
 @Table(name = "attempt_messages")
 public class AttemptMessage {

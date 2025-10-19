@@ -29,7 +29,7 @@ public class UserQuestionAttempt {
     private Question question;
 
     @Column(nullable = false)
-    private int attemptNo = 1;
+    private int attemptNo = 0;
 
     @Column(nullable = false, length = 20)
     @Enumerated(EnumType.STRING)
@@ -51,4 +51,9 @@ public class UserQuestionAttempt {
     @Column(nullable = false)
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public UserQuestionAttempt(User user, Question question) {
+        this.user = user;
+        this.question = question;
+    }
 }

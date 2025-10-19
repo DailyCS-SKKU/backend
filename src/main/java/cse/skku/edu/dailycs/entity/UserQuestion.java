@@ -42,4 +42,9 @@ public class UserQuestion  {
     @Column(nullable = false)
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public UserQuestion(User user, Question question) {
+        this.user = user;
+        this.question = question;
+    }
 }
