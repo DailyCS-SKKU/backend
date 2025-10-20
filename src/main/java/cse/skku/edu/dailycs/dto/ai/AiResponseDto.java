@@ -10,8 +10,8 @@ import lombok.Setter;
 public class AiResponseDto {
 
     private String feedback;
-    private String good;
-    private String improve;
+//    private String good;
+//    private String improve;
     private Integer score;
     private String summary;
 
