@@ -104,4 +104,21 @@ public class UserQuestionService {
 
         return null;
     }
+
+    public List<UserQuestionDto> getRandomQuestions(int count) {
+
+        System.out.println("Random Questions Retrieved: " + count);
+
+        List<Question> result1 = questionRepository.findRandomQuestions(count);
+        System.out.println("Questions Retrieved from Repo: " + result1.size());
+
+        List<UserQuestionDto> result = questionRepository.findRandomQuestions(count).stream()
+                .map(UserQuestionDto::fromQuestion)
+                .toList();
+
+        System.out.println("Random Questions Retrieved: " + result.size());
+
+        return result;
+
+    }
 }

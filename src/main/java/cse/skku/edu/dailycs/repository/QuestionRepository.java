@@ -21,4 +21,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
             @Param("skillId") Long skillId,
             @Param("userId") Long userId);
 
+    @Query(value = "SELECT * FROM questions ORDER BY RAND() LIMIT :count", nativeQuery = true)
+    List<Question> findRandomQuestions(@Param("count") int count);
+
 }

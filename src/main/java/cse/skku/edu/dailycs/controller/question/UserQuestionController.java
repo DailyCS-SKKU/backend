@@ -9,10 +9,7 @@ import cse.skku.edu.dailycs.service.question.UserQuestionService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -72,6 +69,14 @@ public class UserQuestionController {
         Long userId = jwtService.getUserId(token);
 
         UserQuestionDto result = userQuestionService.getNextQuestion(userId, skillId);
+
+        return ResponseEntity.ok().body(result);
+    }
+
+    @GetMapping("/random")
+    public ResponseEntity<List<UserQuestionDto>> getRandomQuestion(
+            @RequestParam int count) {
+        List<UserQuestionDto> result = userQuestionService.getRandomQuestions(count);
 
         return ResponseEntity.ok().body(result);
     }

@@ -71,10 +71,10 @@ public class UserQuestionDto {
                 .day(question.getDay())
                 .skillId(question.getSkill().getId())
                 .skillName(question.getSkill().getName())
-                .bookmark(question.getUserQuestions().getFirst().isBookmark())
-                .status(QuestionStatus.IN_PROGRESS)
-                .createdAt(question.getCreatedAt())
-                .updatedAt(question.getUpdatedAt())
+                .bookmark(null)
+                .status(null)
+                .createdAt(null)
+                .updatedAt(null)
                 .build();
     }
 
